@@ -23,7 +23,9 @@ int main()
 	printf("\t    bp");
 	stampa(arrbp,arrcheck,binv,parola);
 	printf("\n");
-	
-	
+	durtybit(binv,parola);
+	printf("\n\n\n\n");
+ 	stampa(arrbp,arrcheck,binv,parola);
+
 return 0;
 }
