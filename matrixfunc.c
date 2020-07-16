@@ -110,9 +110,12 @@ void durtybit(int m[][C],char p[])
 {
 	srand(time(NULL));
 
-	int r=rand()%strlen(p); //0-strlen(parola)
+	int r=rand()%strlen(p)-1; //0-strlen(parola)-1 |escludo LF
 	int c=rand()%7; //0-7
+	if(r==-1){ //controllo,la matrice non può avere cordinate negative
+		r=r+1;
+	}
 	m[r][c]=!m[r][c];
-	printf("\n\nr: %d",r+1);
-	printf("\nc: %d",c+1);
+	printf("\n\nr: %d",r);
+	printf("\nc: %d",c);
 }
