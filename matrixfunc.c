@@ -46,8 +46,10 @@ void binReverse(int bintmp[][C],int pbin[][C],char parola[])
 
 }
 
-void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[])
+void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr)
 {
+	printf("\t    bp");
+	
 	int l = strlen(parola)-1;
 	for(int i=0;i<l;i++){
 		//stampa parola
@@ -58,6 +60,9 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[])
 		}
 		/*stampa bp*/
 		printf("| %d",arrbp[i]);
+		if(xr==i){
+			printf(" ◄---");
+		}
 	}
 
 	//stampa separatore
@@ -74,7 +79,6 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[])
 void verifica(int arraybp[],int arraycs[],int m[][C],char parola[])
 {
 	int i=0,j=0,r=strlen(parola)-1,contbp=0,contcs=0;
-
 	/*Bit di parità*/
 	for(i=0;i<r;i++){
 		for(j=0;j<C;j++){
@@ -105,17 +109,88 @@ void verifica(int arraybp[],int arraycs[],int m[][C],char parola[])
 		}
 		contcs=0;
 	}
+	
 }
-void durtybit(int m[][C],char p[])
+void durtybit(int m[][C],char p[],int *r,int *c)
 {
 	srand(time(NULL));
 
-	int r=rand()%strlen(p)-1; //0-strlen(parola)-1 |escludo LF
-	int c=rand()%7; //0-7
-	if(r==-1){ //controllo,la matrice non può avere cordinate negative
-		r=r+1;
+	*r=rand()%strlen(p)-1; //0-strlen(parola)-1 |escludo LF
+	*c=rand()%7; //0-7
+	if(*r==-1){ //controllo,la matrice non può avere cordinate negative
+		*r=*r+1;
 	}
-	m[r][c]=!m[r][c];
-	printf("\n\nr: %d",r);
-	printf("\nc: %d",c);
+	m[*r][*c]=!m[*r][*c];
+	printf("\nDurtyBit(random) ---> conto anche lo 0"); 
+	printf("\nr: %d",*r);
+	printf("\nc: %d\n",*c);
+}
+void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int r,int c,int *xr,int *yc) //m[][C],parola,arrbp,contbp,arraycs,contcs
+{
+	int x,y,i,j;
+	int contbp=0,contcs=0;
+	
+	/*Bit di parità*/
+	for(i=0;i<strlen(parola)-1;i++){
+		for(j=0;j<C;j++){
+			if(m[i][j]==1){
+				contbp++;
+			}
+		}
+		//righe
+		x=controllo(parola,arrbp,&contbp,arraycs,&contcs,i,0);
+		if(x==r){
+			*xr=x;
+		}
+		//printf("\n");
+		contbp=0;
+	}
+
+	
+	/*checksum*/
+	for(j=0;j<C;j++){
+		for(i=0;i<strlen(parola)-1;i++){
+			if(m[i][j]==1){
+				contcs++;
+			}
+		}
+		//colonne
+		y=controllo(parola,arrbp,&contbp,arraycs,&contcs,j,1);
+		if(y==c){
+			*yc=y;
+		}
+		contcs=0;
+	}
+
+}
+int controllo(char p[],int arrbp[],int *cbp,int arrcs[],int *ccs,int z,int n)
+{
+	switch(n){
+		case 0:
+			if((*cbp%2==0 && arrbp[z]==1) || (*cbp%2==1 && arrbp[z]==0)){ //se numero cbp-->pari&&arrbp[z]-->1	 oppure	 cbp-->dipari&&arrbp[z]-->0
+				return z;
+			}
+			break;
+				
+		case 1:
+			if((*ccs%2==0 && arrcs[z]==1) || (*ccs%2==1 && arrcs[z]==0)){
+				return z;
+			}
+			break;
+	}
+return 0;
+}
+void setw(int yc)
+{
+	printf("\n   ");
+	for(int i=0;i<yc;i++){
+		printf(" "); 
+	}
+	printf("▲\n");
+	for(int i=0;i<yc;i++){
+		printf(" "); 
+	}
+	printf("   |\n\n");
+
+	
 }
