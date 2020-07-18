@@ -4,4 +4,7 @@
 *!.MD
 *!.sh
 *!.png
+
 !.gitignore
+!photo
+!FileSingolo
