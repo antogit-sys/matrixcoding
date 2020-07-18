@@ -11,7 +11,6 @@ int main()
 	int arrbp[R];
 	int arrcheck[C];
 	
-	int r=0,c=0;
 	int xr,yc;
 	
 	printf("inserisci parola: ");
@@ -24,9 +23,9 @@ int main()
 	printf("\n");
 	verifica(arrbp,arrcheck,binv,parola); //cs & bp
 	//stampa(arrbp,arrcheck,binv,parola,xr); //out stream
-	durtybit(binv,parola,&r,&c); 	//Sporco un bit a caso della matrice
+	durtybit(binv,parola); 	//Sporco un bit a caso della matrice
 
-	rilevazione(binv,parola,arrbp,arrcheck,r,c,&xr,&yc);
+	rilevazione(binv,parola,arrbp,arrcheck,&xr,&yc);
  	stampa(arrbp,arrcheck,binv,parola,xr);
  	setw(yc);
  	

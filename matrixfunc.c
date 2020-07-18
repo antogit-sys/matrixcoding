@@ -111,21 +111,21 @@ void verifica(int arraybp[],int arraycs[],int m[][C],char parola[])
 	}
 	
 }
-void durtybit(int m[][C],char p[],int *r,int *c)
+void durtybit(int m[][C],char p[])
 {
 	srand(time(NULL));
 
-	*r=rand()%strlen(p)-1; //0-strlen(parola)-1 |escludo LF
-	*c=rand()%7; //0-7
-	if(*r==-1){ //controllo,la matrice non può avere cordinate negative
-		*r=*r+1;
+	int r=rand()%strlen(p)-1; //0-strlen(parola)-1 |escludo LF
+	int c=rand()%7; //0-7
+	if(r==-1){ //controllo,la matrice non può avere cordinate negative
+		r=r+1;
 	}
-	m[*r][*c]=!m[*r][*c];
+	m[r][c]=!m[r][c];
 	printf("\nDurtyBit(random) ---> conto anche lo 0"); 
-	printf("\nr: %d",*r);
-	printf("\nc: %d\n",*c);
+	printf("\nr: %d",r);
+	printf("\nc: %d\n",c);
 }
-void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int r,int c,int *xr,int *yc) //m[][C],parola,arrbp,contbp,arraycs,contcs
+void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int *xr,int *yc) //m[][C],parola,arrbp,contbp,arraycs,contcs
 {
 	int x,y,i,j;
 	int contbp=0,contcs=0;
@@ -139,7 +139,7 @@ void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int r,int c,
 		}
 		//righe
 		x=controllo(parola,arrbp,&contbp,arraycs,&contcs,i,0);
-		if(x==r){
+		if(x!=0){
 			*xr=x;
 		}
 		//printf("\n");
@@ -156,7 +156,7 @@ void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int r,int c,
 		}
 		//colonne
 		y=controllo(parola,arrbp,&contbp,arraycs,&contcs,j,1);
-		if(y==c){
+		if(y!=0){
 			*yc=y;
 		}
 		contcs=0;
