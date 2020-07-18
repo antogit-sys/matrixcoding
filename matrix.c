@@ -11,7 +11,10 @@ int main()
 	int arrbp[R];
 	int arrcheck[C];
 	
-	int xr,yc;
+	int xr,yc,os;
+	
+	os=winlin();
+	//printf("os: %d",os); //0
 	
 	printf("inserisci parola: ");
 	//scanf("%s",parola);
@@ -23,13 +26,13 @@ int main()
 	printf("\n");
 	verifica(arrbp,arrcheck,binv,parola); //cs & bp
 	printf("corrected:\n");
-	stampa(arrbp,arrcheck,binv,parola,xr,0); //out stream (0=stampo senza freccia|1=stampo con freccia)
+	stampa(arrbp,arrcheck,binv,parola,xr,os,0); //out stream (0=stampo senza freccia|1=stampo con freccia)
 	printf("\n+--------------------------------------+\n");
 	durtybit(binv,parola); 	//Sporco un bit a caso nella matrice
 
 	rilevazione(binv,parola,arrbp,arrcheck,&xr,&yc); //passaggio per riferimento in C
- 	stampa(arrbp,arrcheck,binv,parola,xr,1);
- 	setw(yc);
+ 	stampa(arrbp,arrcheck,binv,parola,xr,os,1);
+ 	setw(yc,os);
  	
 return 0;
 }

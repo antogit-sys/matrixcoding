@@ -5,6 +5,19 @@
 
 #include "matrixlib.h"
 
+int winlin()
+{
+	if(system("cls")==0){
+		//se è un sistema Windows ritorna 1
+		return 1;
+	}else{
+		system("clear");
+		//se è un sistema Linux ritorna 0
+		return 0;
+	}
+	
+}
+
 void fascii(int ascii[],char parola[])
 {
 	int l = strlen(parola)-1;
@@ -55,11 +68,10 @@ void binReverse(int bintmp[][C],int pbin[][C],char parola[])
 
 }
 
-void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
+void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int os,int n)
 {
-	printf("\t    bp");
-	
 	int l = strlen(parola)-1;
+	printf("\t    bp");
 	for(int i=0;i<l;i++){
 		//stampa parola
 		printf("\n%c: ",parola[i]);
@@ -69,11 +81,15 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 		}
 		/*stampa bp*/
 		printf("| %d",arrbp[i]);
-		if(xr==i && n==1){
-			printf(" ◄---");
+		
+		if(xr==i && n==1 && os==0){//LINUX
+				printf(" ◄---");
+		}else if(xr==i && n==1 && os==1){ //WINDOWS
+				printf(" <---");
 		}
+		
 	}
-
+	
 	//stampa separatore
 	printf("\n");
 	for(int i=0;i<11;i++)
@@ -189,13 +205,17 @@ int controllo(char p[],int arrbp[],int cbp,int arrcs[],int ccs,int z,int n)
 	}
 return 0;
 }
-void setw(int yc)
-{
+void setw(int yc,int os)
+{	
 	printf("\n   ");
 	for(int i=0;i<yc;i++){
 		printf(" "); 
 	}
-	printf("▲\n");
+	if(os==0){ //LINUX
+		printf("▲\n");
+	}else if(os==1){//WINDOWS
+		printf("^\n");
+	}
 	for(int i=0;i<yc;i++){
 		printf(" "); 
 	}
@@ -203,3 +223,4 @@ void setw(int yc)
 
 	
 }
+
