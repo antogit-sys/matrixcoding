@@ -138,7 +138,7 @@ void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int *xr,int 
 			}
 		}
 		//righe
-		x=controllo(parola,arrbp,&contbp,arraycs,&contcs,i,0);
+		x=controllo(parola,arrbp,contbp,arraycs,contcs,i,0);
 		if(x!=0){
 			*xr=x;
 		}
@@ -155,7 +155,7 @@ void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int *xr,int 
 			}
 		}
 		//colonne
-		y=controllo(parola,arrbp,&contbp,arraycs,&contcs,j,1);
+		y=controllo(parola,arrbp,contbp,arraycs,contcs,j,1);
 		if(y!=0){
 			*yc=y;
 		}
@@ -163,17 +163,17 @@ void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int *xr,int 
 	}
 
 }
-int controllo(char p[],int arrbp[],int *cbp,int arrcs[],int *ccs,int z,int n)
+int controllo(char p[],int arrbp[],int cbp,int arrcs[],int ccs,int z,int n)
 {
 	switch(n){
 		case 0:
-			if((*cbp%2==0 && arrbp[z]==1) || (*cbp%2==1 && arrbp[z]==0)){ //se numero cbp-->pari&&arrbp[z]-->1	 oppure	 cbp-->dipari&&arrbp[z]-->0
+			if((cbp%2==0 && arrbp[z]==1) || (cbp%2==1 && arrbp[z]==0)){ //se numero cbp-->pari&&arrbp[z]-->1	 oppure	 cbp-->dipari&&arrbp[z]-->0
 				return z;
 			}
 			break;
 				
 		case 1:
-			if((*ccs%2==0 && arrcs[z]==1) || (*ccs%2==1 && arrcs[z]==0)){
+			if((ccs%2==0 && arrcs[z]==1) || (ccs%2==1 && arrcs[z]==0)){
 				return z;
 			}
 			break;

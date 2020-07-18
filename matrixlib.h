@@ -9,5 +9,5 @@ void stampa(int[],int[],int[][C],char[],int);
 void verifica(int[],int[],int[][C],char[]);
 void durtybit(int[][C],char[]);
 void rilevazione(int[][C],char[],int[],int[],int*,int*);
-int controllo(char[],int[],int*,int[],int*,int,int);
+int controllo(char[],int[],int,int[],int,int,int);
 void setw(int);
