@@ -34,14 +34,23 @@ void intbin(int b[][C],int binv[][C],int n[],char parola[]) //n=numero ascii
 }
 void binReverse(int bintmp[][C],int pbin[][C],char parola[])
 {
+	
 	int z,j=0,i=0;
 	int l = strlen(parola)-1;
-	for(i=0;i<l;i++){
+	
+	for(i=0;i<l;i++){	
+		for(j=C-1,z=0; j>=0; z++,j--){
+			pbin[i][z]=bintmp[i][j];
+		}
+	}
+	
+	
+	/*for(i=0;i<l;i++){
 		z=0;
 		for(j=C-1;j>=0;j--){
 			pbin[i][z++]=bintmp[i][j];
 		}
-	}
+	}*/
 
 
 }
