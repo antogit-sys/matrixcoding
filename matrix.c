@@ -22,11 +22,13 @@ int main()
 
 	printf("\n");
 	verifica(arrbp,arrcheck,binv,parola); //cs & bp
-	//stampa(arrbp,arrcheck,binv,parola,xr); //out stream
-	durtybit(binv,parola); 	//Sporco un bit a caso della matrice
+	printf("corrected:\n");
+	stampa(arrbp,arrcheck,binv,parola,xr,0); //out stream (0=stampo senza freccia|1=stampo con freccia)
+	printf("\n+--------------------------------------+\n");
+	durtybit(binv,parola); 	//Sporco un bit a caso nella matrice
 
-	rilevazione(binv,parola,arrbp,arrcheck,&xr,&yc);
- 	stampa(arrbp,arrcheck,binv,parola,xr);
+	rilevazione(binv,parola,arrbp,arrcheck,&xr,&yc); //passaggio per riferimento in C
+ 	stampa(arrbp,arrcheck,binv,parola,xr,1);
  	setw(yc);
  	
 return 0;

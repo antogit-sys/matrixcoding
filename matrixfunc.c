@@ -55,7 +55,7 @@ void binReverse(int bintmp[][C],int pbin[][C],char parola[])
 
 }
 
-void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr)
+void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 {
 	printf("\t    bp");
 	
@@ -69,7 +69,7 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr)
 		}
 		/*stampa bp*/
 		printf("| %d",arrbp[i]);
-		if(xr==i){
+		if(xr==i && n==1){
 			printf(" ◄---");
 		}
 	}
