@@ -3,8 +3,7 @@
 *!.h
 *!.MD
 *!.sh
-*!.png
 
 !.gitignore
-!photo
-!FileSingolo
+!FileSingolo/matrixSingolo.c
+!Photo/*.png
