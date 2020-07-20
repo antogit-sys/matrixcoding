@@ -1,4 +1,27 @@
+/*
+
+
+ ███▄ ▄███▓ ▄▄▄     ▄▄▄█████▓ ██▀███   ██▓▒██   ██▒    ▄████▄   ▒█████  ▓█████▄  ██▓ ███▄    █   ▄████ 
+▓██▒▀█▀ ██▒▒████▄   ▓  ██▒ ▓▒▓██ ▒ ██▒▓██▒▒▒ █ █ ▒░   ▒██▀ ▀█  ▒██▒  ██▒▒██▀ ██▌▓██▒ ██ ▀█   █  ██▒ ▀█▒
+▓██    ▓██░▒██  ▀█▄ ▒ ▓██░ ▒░▓██ ░▄█ ▒▒██▒░░  █   ░   ▒▓█    ▄ ▒██░  ██▒░██   █▌▒██▒▓██  ▀█ ██▒▒██░▄▄▄░
+▒██    ▒██ ░██▄▄▄▄██░ ▓██▓ ░ ▒██▀▀█▄  ░██░ ░ █ █ ▒    ▒▓▓▄ ▄██▒▒██   ██░░▓█▄   ▌░██░▓██▒  ▐▌██▒░▓█  ██▓
+▒██▒   ░██▒ ▓█   ▓██▒ ▒██▒ ░ ░██▓ ▒██▒░██░▒██▒ ▒██▒   ▒ ▓███▀ ░░ ████▓▒░░▒████▓ ░██░▒██░   ▓██░░▒▓███▀▒
+░ ▒░   ░  ░ ▒▒   ▓▒█░ ▒ ░░   ░ ▒▓ ░▒▓░░▓  ▒▒ ░ ░▓ ░   ░ ░▒ ▒  ░░ ▒░▒░▒░  ▒▒▓  ▒ ░▓  ░ ▒░   ▒ ▒  ░▒   ▒ 
+░  ░      ░  ▒   ▒▒ ░   ░      ░▒ ░ ▒░ ▒ ░░░   ░▒ ░     ░  ▒     ░ ▒ ▒░  ░ ▒  ▒  ▒ ░░ ░░   ░ ▒░  ░   ░ 
+░      ░     ░   ▒    ░        ░░   ░  ▒ ░ ░    ░     ░        ░ ░ ░ ▒   ░ ░  ░  ▒ ░   ░   ░ ░ ░ ░   ░ 
+       ░         ░  ░           ░      ░   ░    ░     ░ ░          ░ ░     ░     ░           ░       ░ 
+                                                      ░                  ░                             
+
+Original Author: antogit-sys 
+Date:20/07/2020
+School:ITT Giorgi
+
+Open Source Project
+
+*/                                                                                                      
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "matrixlib.h"
 
 int main()
@@ -13,12 +36,29 @@ int main()
 	
 	int xr,yc,os;
 	
-	os=winlin();
-	//printf("os: %d",os); //0
 	
-	printf("inserisci parola: ");
-	//scanf("%s",parola);
-	fgets(parola,99,stdin);							
+	os=winlin();
+		
+	//tolgo rimanente
+	if(os==0){
+		system("clear");
+	}else if(os==1){
+		system("cls");
+		
+	}
+	                                                                                   
+	do{
+		printf("inserisci parola: ");
+		//scanf("%s",parola);
+		fgets(parola,99,stdin);
+	
+		if(strcmp(parola,"\n")==0 && os==1){
+			system("clear");	
+		}else if(strcmp(parola,"\n")==0 && os==1){
+			system("cls");
+		}
+	}while(strcmp(parola,"\n")==0);			
+	
 	printf("ascii: ");
 	fascii(ascii,parola);
 	intbin(bintmp,binv,ascii,parola); //convrt int/bin
