@@ -6,4 +6,4 @@
 
 !.gitignore
 !FileSingolo/matrixSingolo.c
-!Photo/*.png
+!photo/*.png
