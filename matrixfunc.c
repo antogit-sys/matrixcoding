@@ -7,6 +7,7 @@
 
 void fascii(int ascii[],char parola[])
 {
+	//#converte char in ascii e stampa
 	int l = strlen(parola)-1;
 	for(int i=0;i<l;i++){
 		ascii[i]=(int)parola[i];
@@ -16,6 +17,7 @@ void fascii(int ascii[],char parola[])
 }
 void intbin(int b[][C],int binv[][C],int n[],char parola[]) //n=numero ascii
 {
+	//#da ascii a bin
 	printf("\n");
 	int l = strlen(parola)-1;
 	for(int i=0;i<l;i++){
@@ -185,7 +187,7 @@ int controllo(char p[],int arrbp[],int cbp,int arrcs[],int ccs,int z,int n)
 				return z;
 			}
 			break;
-				
+
 		case 1:
 			if((ccs%2==0 && arrcs[z]==1) || (ccs%2==1 && arrcs[z]==0)){
 				return z;
