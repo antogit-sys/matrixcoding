@@ -13,7 +13,7 @@
 /* 
 	¯\_(ツ)_/¯ 
 */
-int winlin();
+
 void fascii(int[],char[]);
 void convert(char[],int[]);
 void intbin(int[][C],int[][C],int[],char[]);
