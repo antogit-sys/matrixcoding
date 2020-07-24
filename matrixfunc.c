@@ -72,11 +72,7 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 		printf("| %d",arrbp[i]);
 		
 		if(xr==i && n==1){
-			#if __linux__ || __GNUC__ || __LINUX__ || _linux || __APPLE__
-				printf(" ◄---");
-			#elif __WIN32__ || _WIN64 || __CYGWIN__ || __CYGWIN32__
-				printf(" <---");
-			#endif
+			printf(FRECCIAORIZZONTALE);
 		}
 		
 	}
@@ -202,11 +198,7 @@ void setw(int yc)
 	for(int i=0;i<yc;i++){
 		printf(" "); 
 	}
-#if __linux__ || __GNUC__ || __LINUX__ || _linux || __APPLE__
-	printf("▲\n");
-#elif __WIN32__ || _WIN64 || __CYGWIN__ || __CYGWIN32__
-	printf("^\n");
-#endif
+	printf(FRECCIAVERTICALE);
 
 	for(int i=0;i<yc;i++){
 		printf(" "); 

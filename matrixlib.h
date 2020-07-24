@@ -1,3 +1,13 @@
+#if __linux__ || __GNUC__ || __LINUX__ || _linux || __APPLE__
+#	define FRECCIAORIZZONTALE " ◄---"
+#	define FRECCIAVERTICALE "▲\n"
+#	define PULISCI "clear"
+#elif __WIN32__ || _WIN64 || __CYGWIN__ || __CYGWIN32__
+#	define FRECCIAORIZZONTALE " <---"
+#	define FRECCIAVERTICALE "^\n"
+#	define PULISCI "cls"
+#endif
+
 #define C 7
 #define R 100
 /* 

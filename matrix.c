@@ -13,7 +13,7 @@
                                                       ░                  ░
 
 Original Author: antogit-sys
-Date:22/07/2020
+Date:24/07/2020
 School:ITT Giorgi
 
 ▄︻̷̿┻̿═━一 - - - - Open Source Project
@@ -37,11 +37,10 @@ int main()
 	int xr,yc;
 	                                                                                   
 	do{
+		system(PULISCI);
 		#if __linux__ || __GNUC__ || __LINUX__ || _linux || __APPLE__
-				system("clear");
 				system("figlet -l ""Matrix  Coding""");
 		#elif __WIN32__ || _WIN64 || __CYGWIN__ || __CYGWIN32__
-				system("cls");
 				printf("=============\n");
 				printf("Matrix Coding");
 				printf("\n=============\n");
