@@ -63,7 +63,11 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 	printf("\t    bp");
 	for(int i=0;i<l;i++){
 		//stampa parola
-		printf("\n%c: ",parola[i]);
+		if( n==0 || (xr!=i && n==1) ){
+			printf("\n%c: ",parola[i]);
+		}else if(xr==i && n==1){
+			printf("\nP: ");
+		}
 		for(int j=0;j<C;j++){
 			//stampa stringa binaria
 			printf("%d",pbi[i][j]);
