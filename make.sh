@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc matrix.c matrixfunc.c -o matrixcompleto
+gcc matrix.c matrixfunc.c -o matrixcompleto -lm
 

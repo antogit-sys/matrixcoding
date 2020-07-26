@@ -2,13 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <math.h>
 
 #include "matrixlib.h"
 
 void fascii(int ascii[],char parola[])
 {
-	//#converte char in ascii e stampa
-	int l = strlen(parola)-1;
+	//#converte char in decimal e stampa
+	int l = strlen(parola)-1; 
 	for(int i=0;i<l;i++){
 		ascii[i]=(int)parola[i];
 		printf("%d ",ascii[i]);
@@ -17,21 +18,21 @@ void fascii(int ascii[],char parola[])
 }
 void intbin(int b[][C],int binv[][C],int n[],char parola[]) //n=numero ascii
 {
-	//#da ascii a bin
+	//#da decimal a bin
 	printf("\n");
 	int l = strlen(parola)-1;
 	for(int i=0;i<l;i++){
 		for(int j=0;j<C;j++){
-			if(n[i]%2==0){
+			if(n[i]%2==0){//resto 0
 				b[i][j]=0;
-			}else{
+			}else{// resto 1
 				b[i][j]=1;
 			}
 			n[i]=n[i]/2;
 		}
 	}
 
-	binReverse(b,binv,parola);
+	binReverse(b,binv,parola); //reverse della stringa binaria
 
 }
 void binReverse(int bintmp[][C],int pbin[][C],char parola[])
@@ -60,13 +61,14 @@ void binReverse(int bintmp[][C],int pbin[][C],char parola[])
 void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 {
 	int l = strlen(parola)-1;
-	printf("\t    bp");
+	printf("\t        bp");
 	for(int i=0;i<l;i++){
 		//stampa parola
-		if( n==0 || (xr!=i && n==1) ){
-			printf("\n%c: ",parola[i]);
+		if( n==0 || (xr!=i && n==1) ){ 
+			printf("\n%c:     ",parola[i]);
 		}else if(xr==i && n==1){
-			printf("\nP: ");
+			int cascii=binint(pbi,xr,parola);
+			printf("%c:     ",cascii);
 		}
 		for(int j=0;j<C;j++){
 			//stampa stringa binaria
@@ -82,12 +84,13 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 	}
 	
 	//stampa separatore
-	printf("\n");
-	for(int i=0;i<11;i++)
+	printf("\n       ");
+	for(int i=0;i<7;i++)
 		printf("-");
+	printf("+");
 
 	/*stampa cs*/
-	printf("\ncs ");
+	printf("\ncs     ");
 	for(int j=0;j<C;j++){
 		printf("%d",arrcs[j]);
 	}
@@ -154,9 +157,9 @@ void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int *xr,int 
 			}
 		}
 		//righe
-		x=controllo(parola,arrbp,contbp,arraycs,contcs,i,0);
+		x=controllo(parola,arrbp,contbp,arraycs,contcs,i,0); 
 		if(x!=0){
-			*xr=x;
+			*xr=x; //prendo la cordinata(righe)
 		}
 		//printf("\n");
 		contbp=0;
@@ -173,7 +176,7 @@ void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int *xr,int 
 		//colonne
 		y=controllo(parola,arrbp,contbp,arraycs,contcs,j,1);
 		if(y!=0){
-			*yc=y;
+			*yc=y;//prendo la cordinata(colonna)
 		}
 		contcs=0;
 	}
@@ -181,6 +184,10 @@ void rilevazione(int m[][C],char parola[],int arrbp[],int arraycs[],int *xr,int 
 }
 int controllo(char p[],int arrbp[],int cbp,int arrcs[],int ccs,int z,int n)
 {
+	/*
+	 * n=0 --> bit di parità
+	 * n=1 --> checksum
+	*/ 
 	switch(n){
 		case 0:
 			if((cbp%2==0 && arrbp[z]==1) || (cbp%2==1 && arrbp[z]==0)){ //se numero cbp-->pari&&arrbp[z]-->1	 oppure	 cbp-->dipari&&arrbp[z]-->0
@@ -198,7 +205,7 @@ return 0;
 }
 void setw(int yc)
 {	
-	printf("\n   ");
+	printf("\n       ");
 	for(int i=0;i<yc;i++){
 		printf(" "); 
 	}
@@ -207,8 +214,30 @@ void setw(int yc)
 	for(int i=0;i<yc;i++){
 		printf(" "); 
 	}
-	printf("   |\n\n");
+	printf("       |\n\n");
 
 	
 }
+int binint(int m[][C],int xr,char parola[])
+{
+	//salvo in v[C] la stringa binaria della matrice "sporcata"
+	int v[C],n=0;
+	printf("\n");
+	for(int i=0;i<strlen(parola)-1;i++){
+		if(xr==i){ //controllo
+			for(int j=0;j<C;j++){
+					v[j]=m[xr][j];
+			}
+		}
+			
+	}
 
+	//da binario a decimal
+	for(int i=C-1,j=0; i>=0; i--,j++){
+		if(v[j]==1){
+			n=n+pow(2,i); //n=n+2^i
+		}
+	}
+	
+return n;
+}

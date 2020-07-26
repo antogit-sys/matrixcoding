@@ -37,21 +37,15 @@ int main()
 	int xr,yc;
 	                                                                                   
 	do{
-		system(PULISCI);
-		#if __linux__ || __GNUC__ || __LINUX__ || _linux || __APPLE__
-				system("figlet -l ""Matrix  Coding""");
-		#elif __WIN32__ || _WIN64 || __CYGWIN__ || __CYGWIN32__
-				printf("=============\n");
-				printf("Matrix Coding");
-				printf("\n=============\n");
-		#endif
+		system(PULISCI); //pulizia dello schermo funzionante sia in winzzoz che in linux
+		OSINTRO(); //macro definita in matrixlib.h
 		printf("inserisci parola: ");
 		//scanf("%s",parola);
-		fgets(parola,99,stdin);
+		fgets(parola,99,stdin); //mi tiene conto del carattere 32 (lo spazio)
 	}while(strcmp(parola,"\n")==0);			
 	
 	printf("ascii: ");
-	fascii(ascii,parola);
+	fascii(ascii,parola); //convert char in deciaml
 	intbin(bintmp,binv,ascii,parola); //convrt int/bin
 
 	printf("\n");
@@ -63,7 +57,10 @@ int main()
 
 	rilevazione(binv,parola,arrbp,arrcheck,&xr,&yc); //passaggio per riferimento in C
  	stampa(arrbp,arrcheck,binv,parola,xr,1);
- 	setw(yc);
+ 	setw(yc); //con i dovuti spazi stampo su schermo la freccia verticale
+ 	printf("\n\n");
+ 
+
  	
 return 0;
 }
