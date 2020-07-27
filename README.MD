@@ -34,8 +34,14 @@ gcc matrix.c matrixfunc.c -o matrixcompleto -lm
 
 <div>
 <img src="photo/photo1.png">
-</div> 
+</div>
 
 <div>
 <img src=photo/photo2.png>
+</div>
+
+
+
+<div>
+<img src="photo/photo3.png">
 </div>
