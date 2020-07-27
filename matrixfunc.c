@@ -65,15 +65,21 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 	for(int i=0;i<l;i++){
 		//stampa parola
 		if( n==0 || (xr!=i && n==1) ){ 
-			printf("\n%c:     ",parola[i]);
+			printf("\n%c:\t",parola[i]);
 		}else if(xr==i && n==1){
 			int cascii=binint(pbi,xr,parola);
-			printf("%c:     ",cascii);
+			if(cascii<32 || cascii==127){
+				printf("%s",casciicontroll(cascii));
+			}else if(cascii>32 ||cascii!=127){
+				printf("%c:      ",cascii);
+			}
 		}
+		
 		for(int j=0;j<C;j++){
 			//stampa stringa binaria
 			printf("%d",pbi[i][j]);
 		}
+		
 		/*stampa bp*/
 		printf("| %d",arrbp[i]);
 		
@@ -84,13 +90,13 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 	}
 	
 	//stampa separatore
-	printf("\n       ");
+	printf("\n\t"); //"     "
 	for(int i=0;i<7;i++)
 		printf("-");
 	printf("+");
 
 	/*stampa cs*/
-	printf("\ncs     ");
+	printf("\ncs\t"); //"     "
 	for(int j=0;j<C;j++){
 		printf("%d",arrcs[j]);
 	}
@@ -205,7 +211,7 @@ return 0;
 }
 void setw(int yc)
 {	
-	printf("\n       ");
+	printf("\n\t");
 	for(int i=0;i<yc;i++){
 		printf(" "); 
 	}
@@ -214,8 +220,7 @@ void setw(int yc)
 	for(int i=0;i<yc;i++){
 		printf(" "); 
 	}
-	printf("       |\n\n");
-
+	printf("        |\n\n");
 	
 }
 int binint(int m[][C],int xr,char parola[])
@@ -240,4 +245,78 @@ int binint(int m[][C],int xr,char parola[])
 	}
 	
 return n;
+}
+const char *casciicontroll(int cascii)
+{
+	/* CARATTERI DI CONTROLLO */
+	
+	switch(cascii){
+		case 0:
+			return "NUL:\t"; //null '\0' *
+		case 1:
+			return "SOH:\t"; //start of heading (inizio dell'intestazione) *
+		case 2:
+			return "STX:\t"; //start of text (inizio del testo) *
+		case 3:
+			return "ETX:\t"; //end of text (fine del testo) *
+		case 4:
+			return "EOT:\t"; //end of trasmission (fine della trasmissione) *
+		case 5:
+			return "ENQ:\t"; //enquiry (richiesta) *
+		case 6:
+			return "ACK:\t"; //Acknowledge (riconoscimento) *
+		case 7:
+			return "BEL:\t"; //bell (Viene utilizzato quando è necessario richiamare l'attenzione umana. Può controllare i dispositivi di allarme ) "\a" *
+		case 8:
+			return "BS:\t"; //Backspace "\b" *
+		case 9:
+			return "TAB:\t";//HB (Horizontal Tab) "\t" *
+		case 10:
+			return "LF:\t"; //Leen Feed (avanzamento di riga) "\n" *
+		case 11:
+			return "VT:\t"; //Vertical Tab "\v" *
+		case 12:
+			return "FF:\t"; //Form Feed "\f" *
+		case 13:
+			return "CR:\t"; //Carriage return ritorna a inizio riga"\r" * 
+		case 14:
+			return "SO:\t"; //Shift Out
+		case 15:
+			return "SI:\t"; //Shift In
+		case 16:
+			return "DLE:\t"; //Data Link Escape
+		case 17:
+			return "DC1:\t"; //Device Control 1
+		case 18:
+			return "DC2:\t"; //Device Control 2
+		case 19:
+			return "DC3:\t"; //Device Control 3
+		case 20:
+			return "DC4:\t"; //Device Control 4
+		case 21:
+			return "NAK:\t"; //Negative Acknowledgement *
+		case 22:
+			return "SYN:\t"; //Synchronous Idle *
+		case 23:
+			return "ETB:\t"; //End of Transmission Block
+		case 24:
+			return "CAN:\t"; //Cancel *
+		case 25:
+			return "EM:\t"; //End of Medium
+		case 26:
+			return "SUB:\t"; //Substitute (CTRL ^Z)
+		case 27:
+			return "ESC:\t"; //Escape "\e" 
+		case 28:
+			return "FS:\t"; //File Separator
+		case 29:
+			return "GS:\t"; //Group Separator
+		case 30:
+			return "RS:\t"; //Record Separator
+		case 31:
+			return "US:\t"; //Unit Separator
+		
+	}
+
+return "DEL:\t"; //0x127 - 1111111
 }
