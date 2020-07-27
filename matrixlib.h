@@ -8,7 +8,7 @@
 #	define FRECCIAVERTICALE "▲\n"
 #	define PULISCI "clear"
 #	define OSINTRO() printf("=============\nMatrix Coding\n=============\n")
-#elif __WIN32__ || _WIN64 || __CYGWIN__ || __CYGWIN32__ //altrimenti se è un sistema winzzoz dichiara
+#elif _WIN32 || _WIN64 || __CYGWIN__ || __CYGWIN32__ //altrimenti se è un sistema winzzoz dichiara
 #	define FRECCIAORIZZONTALE " <---"
 #	define FRECCIAVERTICALE "^\n"
 #	define PULISCI "cls"
@@ -33,4 +33,3 @@ int controllo(char[],int[],int,int[],int,int,int);
 void setw(int);
 int binint(int[][C],int,char[]);
 const char* casciicontroll(int);
-
