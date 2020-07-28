@@ -70,7 +70,7 @@ void stampa(int arrbp[],int arrcs[],int pbi[][C],char parola[],int xr,int n)
 			int cascii=binint(pbi,xr,parola);
 			if(cascii<32 || cascii==127){
 				printf("%s",casciicontroll(cascii));
-			}else if(cascii>32 ||cascii!=127){
+			}else{
 				printf("%c:      ",cascii);
 			}
 		}

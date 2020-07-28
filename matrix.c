@@ -34,7 +34,7 @@ int main()
 	int arrbp[R];
 	int arrcheck[C];
 	
-	int xr,yc;
+	int xr=0,yc=0;
 	                                                                                   
 	do{
 		system(PULISCI); //pulizia dello schermo funzionante sia in winzzoz che in linux
@@ -59,6 +59,8 @@ int main()
  	stampa(arrbp,arrcheck,binv,parola,xr,1);
  	setw(yc); //con i dovuti spazi stampo su schermo la freccia verticale
  	printf("\n\n");
+ 	
+ 	getchar();
  
 
  	
