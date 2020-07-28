@@ -1,6 +1,7 @@
 **# INSTALL DEBIAN BASED**
 
 ```shell
+git clone https://github.com/antogit-sys/matrixcoding.git
 sudo apt install figlet
 ./make.sh 
 ```
@@ -10,6 +11,7 @@ sudo apt install figlet
 **# INSTALL ARCH LINUX BASED**
 
 ```shell
+git clone https://github.com/antogit-sys/matrixcoding.git
 sudo pacman -S figlet
 ./make.sh
 ```
